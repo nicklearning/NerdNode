@@ -11,9 +11,11 @@ router.get('/', async (req, res) => {
                 },
             ],
         });
-        res.json(blogPostData);
-        // TODO serialize the data
-        // TODO render the homepage and pass in the serialize blog post data
+        // Serialize the blogposts to pass them to Handlebars
+        const blogPosts = blogPostData.map((post) => post.get({ plain: true }));
+        // Pass the serialized blog posts data and the logged_in status to the view
+        res.render('home', { blogPosts, logged_in: req.session.logged_in });
+
     } catch (err) {
         console.log(err);
         res.status(500).json(err)
