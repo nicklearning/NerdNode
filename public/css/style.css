@@ -1,0 +1,9 @@
+.card {
+    width: 100%; /* Set a fixed width or use a percentage */
+    margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.container {
+    max-width: 1200px; /* Adjust max-width as needed */
+    margin: 0 auto; /* Center the container */
+}

@@ -14,7 +14,10 @@ router.get('/', async (req, res) => {
         // Serialize the blogposts to pass them to Handlebars
         const blogPosts = blogPostData.map((post) => post.get({ plain: true }));
         // Pass the serialized blog posts data and the logged_in status to the view
-        res.render('home', { blogPosts, logged_in: req.session.logged_in });
+        res.render('home', {
+            blogPosts, logged_in: req.session.logged_in,
+            pageTitle: 'NerdNode',
+        });
 
     } catch (err) {
         console.log(err);
