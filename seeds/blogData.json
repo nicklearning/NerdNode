@@ -1,0 +1,28 @@
+[
+    {
+        "title": "BlogPost1",
+        "content": "lorem*8",
+        "userId": 1
+    },
+    {
+        "title": "BlogPost2",
+        "content": "lorem*8",
+        "userId": 1
+    },
+    {
+        "title": "BlogPost3",
+        "content": "lorem*8",
+        "userId": 1
+    },
+    {
+        "title": "BlogPost4",
+        "content": "lorem*8",
+        "userId": 1
+    },
+    {
+        "title": "BlogPost5",
+        "content": "lorem*8",
+        "userId": 1
+    }   
+
+]
