@@ -1,28 +1,17 @@
 [
     {
         "title": "BlogPost1",
-        "content": "lorem*8",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac lorem sed libero commodo congue. Nullam eleifend dolor ac ante faucibus, nec eleifend eros eleifend. Sed sollicitudin convallis lacinia. Nulla aliquam justo vel est luctus, id semper velit faucibus. Integer nec lacus eu neque tincidunt gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vitae ultricies odio. Aliquam tristique mi nec risus vehicula ultrices. Sed vitae lectus sit amet lacus aliquet ultrices.",
         "userId": 1
     },
     {
         "title": "BlogPost2",
-        "content": "lorem*8",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac lorem sed libero commodo congue. Nullam eleifend dolor ac ante faucibus, nec eleifend eros eleifend. Sed sollicitudin convallis lacinia. Nulla aliquam justo vel est luctus, id semper velit faucibus. Integer nec lacus eu neque tincidunt gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vitae ultricies odio. Aliquam tristique mi nec risus vehicula ultrices. Sed vitae lectus sit amet lacus aliquet ultrices.",
         "userId": 1
     },
     {
         "title": "BlogPost3",
-        "content": "lorem*8",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac lorem sed libero commodo congue. Nullam eleifend dolor ac ante faucibus, nec eleifend eros eleifend. Sed sollicitudin convallis lacinia. Nulla aliquam justo vel est luctus, id semper velit faucibus. Integer nec lacus eu neque tincidunt gravida. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vitae ultricies odio. Aliquam tristique mi nec risus vehicula ultrices. Sed vitae lectus sit amet lacus aliquet ultrices.",
         "userId": 1
-    },
-    {
-        "title": "BlogPost4",
-        "content": "lorem*8",
-        "userId": 1
-    },
-    {
-        "title": "BlogPost5",
-        "content": "lorem*8",
-        "userId": 1
-    }   
-
+    }
 ]
