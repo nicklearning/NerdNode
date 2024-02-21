@@ -1,12 +1,4 @@
 <div class="login-container">
-    <h4>Login</h4>
-    <form class="login-form">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Login!</button>
-    </form>
-    <a href="/signup">Sign up instead</a>
+    {{> user-details login=true}}
 </div>
 <script src="/js/login.js"></script>
