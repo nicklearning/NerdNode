@@ -104,6 +104,61 @@ main {
     padding: 15px;
 }
 
+.login-container {
+    border: 3px solid var(--black);
+    margin: 40px auto;
+    width: 80%;
+    padding-bottom: 15px;
+}
+
+.login-container h4 {
+    color: var(--light-green);
+    background-color: var(--black);
+    padding: 10px;
+}
+
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.login-form input,
+.login-form button,
+.login-form label {
+    width: calc(100% - 20px);
+    /* Subtract 20px from 100% width to account for margin */
+    margin: 0px auto;
+    /* Add margin between form items */
+}
+
+.login-form label {
+    margin-bottom: 3px;
+}
+
+#username {
+    margin-bottom: 15px;
+}
+
+.login-form button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 5px 0;
+    background-color: #666666;
+    color: white;
+    border-radius: 10px;
+}
+
+.login-form button:hover {
+    background-color: var(--black);
+    cursor: pointer;
+}
+
+.login-container a {
+    padding-left: 15px;
+}
+
 footer {
     text-align: center;
     padding-bottom: 15px;
