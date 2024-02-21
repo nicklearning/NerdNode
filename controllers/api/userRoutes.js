@@ -23,11 +23,12 @@ router.post('/login', async (req, res) => {
             return;
         }
 
+        req.session.logged_in = true;
+        req.session.user_id = userData.id;
+
+
         // Create session variables based on the logged in user
         req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-
             res.json({ user: userData, message: 'You are now logged in!' });
         });
 
