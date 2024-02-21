@@ -159,6 +159,12 @@ main {
     padding-left: 15px;
 }
 
+#error-message {
+    text-align: center;
+    color: red;
+    font-size: medium;
+}
+
 footer {
     text-align: center;
     padding-bottom: 15px;

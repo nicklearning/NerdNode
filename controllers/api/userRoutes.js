@@ -48,7 +48,28 @@ router.post('/logout', (req, res) => {
     }
 });
 
+router.post('/signup', async (req, res) => {
+    try {
+        const { username, password } = req.body;
 
+        const existingUser = await User.findOne({ where: { username } });
+
+        if (existingUser) {
+            return res.status(400).json({ message: 'Username already exists, please choose a different one' });
+        }
+        const newUser = await User.create({ username, password });
+
+        req.session.logged_in = true;
+        req.session.user_id = newUser.id;
+
+        req.session.save(() => {
+            res.json({ user: newUser, message: 'Signup successful. You are now logged in!' });
+        });
+
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
 
 
 module.exports = router;
