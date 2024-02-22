@@ -1,10 +1,12 @@
-<section id="posts">
-    <ul>
-        {{#each posts}}
-        <li>{{this.title}}</li>
-        {{/each}}
-    </ul>
-</section>
+<div id="user-posts-container">
+    {{#each userPosts as |userPost|}}
+    <div class="post">
+        <h4>{{userPost.dataValues.title}}</h4>
+        <p>{{format_date userPost.dataValues.createdAt}}</p>
+    </div>
+    {{/each}}
+</div>
+
 
 <!-- New Post Form (Initially Hidden) -->
 <section id="new-post-form" style="visibility: hidden;">
