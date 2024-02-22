@@ -1,15 +1,30 @@
 <div id="user-posts-container">
     {{#each userPosts as |userPost|}}
-    <div class="post">
-        <h4>{{userPost.dataValues.title}}</h4>
+    <div class="post" data-postid="{{userPost.dataValues.id}}">
+        <p>{{userPost.dataValues.title}}</p>
         <p>{{format_date userPost.dataValues.createdAt}}</p>
     </div>
     {{/each}}
 </div>
 
+<!-- Edit Post Form -->
+<div id="edit-post-container" style="display: none;">
+    <h4>Edit Post</h4>
+    <form id="edit-post-form">
+        <input type="hidden" id="edit-post-id" name="edit-post-id" class="edit-post-container-width">
+        <label for="edit-post-title" class="edit-post-container-width">Title</label>
+        <input type="text" id="edit-post-title" class="edit-post-container-width" name="edit-post-title" required>
+        <label for="edit-post-content" class="edit-post-container-width">Content</label>
+        <textarea id="edit-post-content" class="edit-post-container-width" name="edit-post-content" rows="4"
+            required></textarea>
+        <button type="submit" id="update-post-btn" class="edit-post-container-width">Update Post</button>
+        <button type="button" id="delete-post-btn" class="edit-post-container-width">Delete Post</button>
+    </form>
+</div>
+
 
 <!-- New Post Form (Initially Hidden) -->
-<section id="new-post-form" style="visibility: hidden;">
+<section id="new-post-form" style="display: none;">
     <h4>Create New Post</h4>
     <form id="post-form">
         <label for="title">Title</label>

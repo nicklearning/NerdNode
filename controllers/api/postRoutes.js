@@ -17,20 +17,69 @@ router.post('/create-post', async (req, res) => {
     }
 });
 
-// router.get('/user-posts', async (req, res) => {
-//     try {
-//         const userId = req.session.user_id;
+// GET a single post by ID
+router.get('/:id', async (req, res) => {
+    try {
+        const postId = req.params.id;
+        // Find the post by ID
+        const post = await BlogPost.findByPk(postId);
+        if (!post) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+        // Return the post data
+        res.status(200).json(post);
+        console.log(post);
+    } catch (error) {
+        console.error("Error fetching post:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
 
-//         const userPosts = await BlogPost.findAll({
-//             where: { userId: userId }
-//         });
+router.put('/update-post/:id', async (req, res) => {
+    try {
+        const postId = req.params.id;
+        const { title, content } = req.body;
 
-//         res.json(userPosts); 
-//     } catch (error) {
-//         console.error("Error fetching user's blog posts:", error);
-//         res.status(500).json({ message: "Internal Server Error" });
-//     }
-// });
+        // Find the post by ID
+        const post = await BlogPost.findByPk(postId);
+
+        if (!post) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+
+        // Update the post
+        post.title = title;
+        post.content = content;
+        await post.save();
+
+        res.status(200).json({ message: 'Post updated successfully', post });
+    } catch (error) {
+        console.error("Error updating post:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+router.delete('/delete-post/:id', async (req, res) => {
+    try {
+        const postId = req.params.id;
+
+        // Find the post by ID
+        const post = await BlogPost.findByPk(postId);
+
+        if (!post) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+
+        // Delete the post
+        await post.destroy();
+
+        res.status(200).json({ message: 'Post deleted successfully' });
+    } catch (error) {
+        console.error("Error deleting post:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
 
 
 module.exports = router;

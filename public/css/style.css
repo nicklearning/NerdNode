@@ -231,7 +231,71 @@ main {
     cursor: pointer;
 }
 
+.post p,
+.post p {
+    margin: 0;
+}
 
+.post {
+    width: 60%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #666666;
+    color: white;
+    height: 100%;
+    padding: 5px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#edit-post-container {
+    border: 3px solid var(--black);
+    margin: 40px auto;
+    width: 80%;
+    padding-bottom: 15px;
+}
+
+#edit-post-container h4 {
+    color: var(--light-green);
+    background-color: var(--black);
+    padding: 10px;
+}
+
+#edit-post-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-post-container-width {
+    width: calc(100% - 20px);
+    margin: 0px auto;
+}
+
+#edit-post-container label {
+    margin-bottom: 3px;
+}
+
+#edit-post-container input {
+    margin-bottom: 15px;
+}
+
+#edit-post-container textarea {
+    margin-bottom: 15px;
+}
+
+#edit-post-container button {
+    color: white;
+    background-color: #666666;
+    padding: 5px 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#update-post-btn {
+    margin-bottom: 10px;
+}
 
 footer {
     text-align: center;
