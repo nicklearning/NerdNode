@@ -81,4 +81,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    const updatePostButton = document.getElementById("update-post-btn");
+    updatePostButton.addEventListener("click", async function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        const postId = document.getElementById("edit-post-id").value;
+        const title = document.getElementById("edit-post-title").value;
+        const content = document.getElementById("edit-post-content").value;
+        try {
+            const response = await fetch(`/api/posts/update-post/${postId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ title, content })
+            });
+            if (!response.ok) {
+                throw new Error("Failed to update post");
+            }
+            window.location.href = '/dashboard';
+        } catch (error) {
+            console.error("Error updating post:", error);
+        }
+    });
+
+
 });
