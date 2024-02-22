@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(errorData.message);
             }
 
-            window.location.href = '/';
+            window.location.href = '/dashboard';
 
         } catch (error) {
             errorMessage.textContent = error.message;

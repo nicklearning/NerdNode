@@ -1,0 +1,26 @@
+{{#if dashboard}}
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a id="logout">Logout</a></li>
+        </ul>
+    </nav>
+    <h1>Dashboard</h1>
+</header>
+{{else}}
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            {{#unless logged_in}}
+            <li><a href="/login">Login</a></li>
+            {{/unless}}
+            <li><a id="logout">Logout</a></li>
+        </ul>
+    </nav>
+    <h1>The Tech Blog</h1>
+</header>
+{{/if}}

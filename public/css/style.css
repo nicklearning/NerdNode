@@ -121,16 +121,13 @@ main {
 .login-container form {
     display: flex;
     flex-direction: column;
-
 }
 
 .login-form input,
 .login-form button,
 .login-form label {
     width: calc(100% - 20px);
-    /* Subtract 20px from 100% width to account for margin */
     margin: 0px auto;
-    /* Add margin between form items */
 }
 
 .login-form label {
@@ -164,6 +161,77 @@ main {
     color: red;
     font-size: medium;
 }
+
+#new-post-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#new-post {
+    color: var(--light-green);
+    background-color: var(--black);
+    font-size: larger;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#logout {
+    cursor: pointer;
+}
+
+#new-post-form {
+    width: 80%;
+    margin: 40px auto;
+    margin-bottom: 20px;
+    border: 3px solid var(--black);
+}
+
+#new-post-form h4 {
+    background-color: var(--black);
+    color: var(--light-green);
+    padding: 10px;
+}
+
+#post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#post-form input,
+#post-form button,
+#post-form textarea,
+#post-form label {
+    width: calc(100% - 20px);
+    margin: 0px auto;
+}
+
+#post-form label {
+    margin-bottom: 3px;
+}
+
+#post-form input {
+    margin-bottom: 15px;
+    border: 2px solid #4d89e9;
+}
+
+#post-form textarea {
+    margin-bottom: 15px;
+    border: 2px solid #4d89e9;
+}
+
+#post-form button {
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding: 5px 0;
+    background-color: #666666;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
 
 footer {
     text-align: center;
