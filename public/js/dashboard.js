@@ -62,4 +62,23 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error creating new post:", error);
         }
     });
+
+    // Event listener for the delete button
+    const deletePostButton = document.getElementById("delete-post-btn");
+    deletePostButton.addEventListener("click", async function () {
+        const postId = document.getElementById("edit-post-id").value;
+        try {
+            const response = await fetch(`/api/posts/delete-post/${postId}`, {
+                method: "DELETE"
+            });
+            if (!response.ok) {
+                throw new Error("Failed to delete post");
+            }
+            // Redirect to the dashboard after successful deletion
+            window.location.href = '/dashboard';
+        } catch (error) {
+            console.error("Error deleting post:", error);
+        }
+    });
+
 });
