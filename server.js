@@ -3,23 +3,22 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
-
-
 const sequelize = require('./config/connection');
-
 const helpers = require('./utils/helpers');
-
-// Create a new sequelize store using the express-session package
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sessionExpirationCheck = require('./middleware/sessionExpirationCheck');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
-// Configure and link a session object with the sequelize store
+
 const sess = {
     secret: 'Super secret secret',
-    cookie: {},
+    cookie: {
+        maxAge: 15 * 60 * 1000, // 15 minutes in milliseconds
+        rolling: true // reset max age each time the client submits a request
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
@@ -27,8 +26,8 @@ const sess = {
     })
 };
 
-// Add express-session and store as Express.js middleware
 app.use(session(sess));
+app.use(sessionExpirationCheck);
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
