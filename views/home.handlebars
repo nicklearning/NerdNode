@@ -1,4 +1,7 @@
 {{#each blogPosts as |blogPost|}}
 {{> post-details blogPost}}
 {{/each}}
+
+{{#if logged_in}}
 <script src="/js/addComment.js"></script>
+{{/if}}
