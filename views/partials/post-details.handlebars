@@ -1,7 +1,15 @@
-<div class="post-details">
+<div class="post-details" data-blog-post-id="{{id}}">
     <div class="post-details-header">
-        <h4>{{title}}</h3>
-            <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
+        <h4>{{title}}</h4>
+        <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
     </div>
     <p class="blog-post-content">{{content}}</p>
+</div>
+
+<div class="comment-form" style="display: none;">
+    <form id="comment-form">
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="content" placeholder="Enter your comment"></textarea>
+        <button type="submit">Submit</button>
+    </form>
 </div>

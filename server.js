@@ -6,7 +6,6 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const sessionExpirationCheck = require('./middleware/sessionExpirationCheck');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -27,7 +26,6 @@ const sess = {
 };
 
 app.use(session(sess));
-app.use(sessionExpirationCheck);
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

@@ -45,7 +45,7 @@ router.get('/signup', (req, res) => {
     res.render('sign-up');
 })
 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const userId = req.session.user_id;
 
