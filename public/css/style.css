@@ -296,7 +296,7 @@ main {
     margin-bottom: 10px;
 }
 
-.comment-form {
+.comment-form-container {
     border: 3px solid var(--black);
     width: 80%;
     margin: 0 auto;
@@ -307,14 +307,14 @@ main {
     background-color: var(--black);
 }
 
-.comment-form form {
+.comment-form-container form {
     display: flex;
     flex-direction: column;
     width: calc(100% - 20px);
     margin: 0px auto;
 }
 
-.comment-form button {
+.comment-form-container button {
     color: white;
     background-color: #666666;
     padding: 5px 0;
@@ -343,6 +343,22 @@ main {
     margin: 0 auto;
     border: 3px solid var(--black);
     margin-bottom: 10px;
+}
+
+.comment p {
+    padding-left: 20px;
+}
+
+.comment p:first-child {
+    padding-top: 8px;
+}
+
+.add-comment-button {
+    margin: 10px;
+    background-color: #666666;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 footer {

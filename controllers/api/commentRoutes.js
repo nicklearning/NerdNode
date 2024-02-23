@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
+const { Comment, User } = require('../../models');
 
 router.post('/new-comment', async (req, res) => {
     try {
         const { content, blogPostId } = req.body;
 
         const userId = req.session.user_id;
-        console.log(userId);
 
         const newComment = await Comment.create({
             content: content,
@@ -14,20 +13,18 @@ router.post('/new-comment', async (req, res) => {
             blogPostId: blogPostId
         });
 
-        res.status(201).json({ message: 'Comment created successfully', comment: newComment });
+        // Fetch the associated user data
+        const user = await User.findByPk(userId);
+
+        // Serialize the user data
+        const serializedUser = user.get({ plain: true });
+
+        res.status(201).json({ message: 'Comment created successfully', comment: newComment, user: serializedUser });
+        console.log(newComment, serializedUser);
     } catch (error) {
-        // If there's an error, send an error response
         console.error('Error creating comment:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-
 });
-
-
-router.get
-
-
-
-
 
 module.exports = router;
