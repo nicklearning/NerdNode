@@ -26,7 +26,6 @@ Comment.init(
                 model: User,
                 key: 'id',
             }
-
         },
         blogPostId: {
             type: DataTypes.INTEGER,

@@ -24,6 +24,8 @@ router.post('/new-comment', async (req, res) => {
 });
 
 
+router.get
+
 
 
 

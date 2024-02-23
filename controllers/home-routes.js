@@ -1,28 +1,54 @@
 const router = require('express').Router();
-const { BlogPost, User } = require('../models');
+const { BlogPost, User, Comment } = require('../models');
 const withAuth = require('../utils/withAuth');
 
 router.get('/', async (req, res) => {
     try {
-        const blogPostData = await BlogPost.findAll({
+        // Fetch all blog posts with associated user data
+        const blogPosts = await BlogPost.findAll({
             include: [
                 {
                     model: User,
-                    attributes: ['username'],
-                },
-            ],
+                    attributes: ['id', 'username']
+                }
+            ]
         });
-        // Serialize the blogposts to pass them to Handlebars
-        const blogPosts = blogPostData.map((post) => post.get({ plain: true }));
+
+        // Fetch all comments with associated user data
+        const comments = await Comment.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['id', 'username']
+                }
+            ]
+        });
 
 
-        // Pass the serialized blog posts data and the logged_in status to the view
+        // Serialize the blog posts and comments to plain objects
+        const serializedBlogPosts = blogPosts.map(post => post.get({ plain: true }));
+        const serializedComments = comments.map(comment => comment.get({ plain: true }));
+
+        const commentsByPostId = {};
+        serializedComments.forEach(comment => {
+            const postId = comment.blogPostId;
+            if (!commentsByPostId[postId]) {
+                commentsByPostId[postId] = [];
+            }
+            commentsByPostId[postId].push(comment);
+        });
+
+
+        console.log(serializedBlogPosts);
+        console.log(serializedComments);
+
+        // Pass the serialized blog posts, comments, and logged_in status to the view
         res.render('home', {
-            blogPosts,
+            blogPosts: serializedBlogPosts,
+            comments: commentsByPostId,
             logged_in: req.session.logged_in,
             pageTitle: 'The Tech Blog'
         });
-
     } catch (err) {
         console.log(err);
         res.status(500).json(err)

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { BlogPost } = require('../../models');
+const { BlogPost, Comment, User } = require('../../models');
 
 router.post('/create-post', async (req, res) => {
     try {
@@ -80,6 +80,22 @@ router.delete('/delete-post/:id', async (req, res) => {
     }
 });
 
-
+router.get('/:id/comments', async (req, res) => {
+    try {
+        const { id } = req.params;
+        // Fetch comments associated with the specified blog post ID
+        const comments = await Comment.findAll({
+            where: { blogPostId: id },
+            include: {
+                model: User,
+                attributes: ['username'] // Include only the username attribute
+            }
+        });
+        res.json(comments);
+    } catch (error) {
+        console.error('Error fetching comments:', error);
+        res.status(500).json({ error: 'Failed to fetch comments' });
+    }
+});
 
 module.exports = router;

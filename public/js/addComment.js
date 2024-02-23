@@ -1,46 +1,58 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const postDetails = document.querySelectorAll('.post-details');
-    const commentForm = document.querySelector('.comment-form');
-    let blogPostId = null;
+const format_date = (date) => {
+    // Check if the input date is valid
+    if (!date) return '';
 
-    postDetails.forEach(post => {
-        post.addEventListener('click', () => {
-            blogPostId = post.dataset.blogPostId;
-            commentForm.style.display = 'block';
+    // Convert the date to a JavaScript Date object
+    const postDate = new Date(date);
+
+    // Get the month, day, and year of the post's creation date
+    const month = postDate.getMonth() + 1;
+    const day = postDate.getDate();
+    const year = postDate.getFullYear();
+
+    // Return the formatted date as MM/DD/YYYY
+    return `${month}/${day}/${year}`;
+};
+document.addEventListener('DOMContentLoaded', () => {
+    // Function to fetch comments associated with a blog post
+    const fetchComments = async (postId) => {
+        try {
+            const response = await fetch(`/api/posts/${postId}/comments`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch comments');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching comments:', error);
+            return [];
+        }
+    };
+
+    // Function to display comments in the UI
+    const displayComments = (comments) => {
+        const commentsContainer = document.querySelector('.comments-container');
+        commentsContainer.innerHTML = ''; // Clear previous comments
+
+        console.log(comments);
+
+        comments.forEach(comment => {
+            const commentElement = document.createElement('div');
+            commentElement.classList.add('comment');
+            commentElement.innerHTML = `
+                <p>${comment.content}</p>
+                <p>-${comment.user.username}, ${format_date(comment.createdAt)}</p>
+            `;
+            commentsContainer.appendChild(commentElement);
+        });
+    };
+
+
+    // Add click event listener to post details elements
+    document.querySelectorAll('.post-details').forEach(post => {
+        post.addEventListener('click', async () => {
+            const postId = post.dataset.blogPostId;
+            const comments = await fetchComments(postId);
+            displayComments(comments);
         });
     });
-
-    const commentFormSubmit = commentForm.querySelector('#comment-form');
-    const submitButton = commentFormSubmit.querySelector('button[type="submit"]');
-
-    submitButton.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(commentFormSubmit);
-        const content = formData.get('content');
-
-        try {
-            const response = await fetch('/api/comments/new-comment', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ content, blogPostId })
-            });
-            if (!response.ok) {
-                throw new Error('Failed to submit comment');
-            }
-            // Optionally, you can handle the response here
-            console.log('Comment submitted successfully');
-
-            // Reset the form after submission
-            const commentFormElement = document.getElementById('comment-form');
-            commentFormElement.reset();
-
-            // Hide the comment form
-            commentForm.style.display = 'none';
-        } catch (error) {
-            console.error('Error submitting comment:', error);
-        }
-    });
-
 });

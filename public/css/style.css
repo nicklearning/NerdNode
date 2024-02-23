@@ -231,7 +231,6 @@ main {
     cursor: pointer;
 }
 
-.post p,
 .post p {
     margin: 0;
 }
@@ -294,6 +293,55 @@ main {
 }
 
 #update-post-btn {
+    margin-bottom: 10px;
+}
+
+.comment-form {
+    border: 3px solid var(--black);
+    width: 80%;
+    margin: 0 auto;
+}
+
+#comment-form-header {
+    height: 50px;
+    background-color: var(--black);
+}
+
+.comment-form form {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 20px);
+    margin: 0px auto;
+}
+
+.comment-form button {
+    color: white;
+    background-color: #666666;
+    padding: 5px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#comment-form label {
+    margin: 0;
+}
+
+#comment-form label {
+    margin-bottom: 5px;
+    margin-top: 3px;
+}
+
+#comment-form textarea {
+    margin-bottom: 10px;
+    min-height: 100px;
+    border: 2px solid #4d89e9;
+}
+
+.comment {
+    width: 80%;
+    margin: 0 auto;
+    border: 3px solid var(--black);
     margin-bottom: 10px;
 }
 
