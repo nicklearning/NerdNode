@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-
     // Function to hide all other posts
     const hideOtherPosts = (selectedPost) => {
         document.querySelectorAll('.post-details').forEach(post => {
@@ -57,38 +56,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     };
+
     const commentFormContainer = document.querySelector('.comment-form-container');
+
     // Function to add the "Add Comment" button
-    let addButtonAdded = false;
     const addAddCommentButton = (post) => {
-        if (!addButtonAdded) {
-            const addCommentButton = document.createElement('button');
-            addCommentButton.textContent = 'Add Comment';
-            addCommentButton.classList.add('add-comment-button');
+        const addCommentButton = document.createElement('button');
+        addCommentButton.textContent = 'Add Comment';
+        addCommentButton.classList.add('add-comment-button');
 
-            // Add event listener for the button click
-            addCommentButton.addEventListener('click', (event) => {
-                // Logic to handle the "Add Comment" button click
-                console.log('Add Comment button clicked');
+        // Add event listener for the button click
+        addCommentButton.addEventListener('click', (event) => {
+            // Logic to handle the "Add Comment" button click
+            console.log('Add Comment button clicked');
 
-                commentsContainer.style.display = 'none';
-                commentFormContainer.style.display = 'block';
-                event.target.style.display = 'none';
-                event.stopPropagation(); // Prevent event bubbling
-            });
+            commentsContainer.style.display = 'none';
+            commentFormContainer.style.display = 'block';
+            event.target.style.display = 'none';
+            event.stopPropagation(); // Prevent event bubbling
+        });
 
-            // Append the button to the selected post
-            post.appendChild(addCommentButton);
-
-            // Update the flag to indicate that the button has been added
-            addButtonAdded = true;
-        }
+        // Append the button to the selected post
+        post.appendChild(addCommentButton);
     };
 
     // Add click event listener to post details elements
     document.querySelectorAll('.post-details').forEach(post => {
         post.addEventListener('click', async () => {
             const postId = post.dataset.blogPostId;
+            console.log(postId);
             const comments = await fetchComments(postId);
             displayComments(comments);
             addAddCommentButton(post);
@@ -138,13 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const newCommentElement = document.createElement('div');
             newCommentElement.classList.add('comment');
             newCommentElement.innerHTML = `
-    <p>${newCommentData.comment.content}</p>
-    <p>-${newCommentData.user.username}, ${format_date(newCommentData.comment.createdAt)}</p>
-`;
+                <p>${newCommentData.comment.content}</p>
+                <p>-${newCommentData.user.username}, ${format_date(newCommentData.comment.createdAt)}</p>
+            `;
 
             // Append the new comment element to the comments container
             commentsContainer.appendChild(newCommentElement);
 
+            // Add the "Add Comment" button back to the post
+            const post = document.querySelector('.post-details');
+            addAddCommentButton(post);
 
         } catch (error) {
             console.error('Error submitting comment:', error);
