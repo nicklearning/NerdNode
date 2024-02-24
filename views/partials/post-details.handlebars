@@ -4,16 +4,15 @@
         <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
     </div>
     <p class="blog-post-content">{{content}}</p>
-
 </div>
+<button class="add-comment-button" style="display: inline;">Add Comment</button>
+
 <div class="comments-container">
     <!-- Comments will be displayed here -->
 </div>
 
-<div class="comment-form-container" style="display: none;">
-    <form id="comment-form">
-        <label for="comment">Comment:</label>
-        <textarea id="comment" name="content" placeholder="Enter your comment"></textarea>
-        <button type="submit">Submit</button>
-    </form>
-</div>
+<form id="comment-form" style="display: none;">
+    <label for="comment">Comment:</label>
+    <textarea id="comment" name="content" placeholder="Enter your comment"></textarea>
+    <button type="submit">Submit</button>
+</form>
