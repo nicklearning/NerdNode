@@ -71,10 +71,14 @@ main {
     flex: 1;
 }
 
-.post-details {
+.post-details-container {
     width: 80%;
+    margin: 0 auto;
+}
+
+.post-details {
     border: 3px solid var(--black);
-    margin: 40px auto;
+    margin-top: 40px;
 }
 
 .post-details-header {
@@ -300,6 +304,7 @@ main {
     border: 3px solid var(--black);
     width: 80%;
     margin: 0 auto;
+    flex-direction: column;
 }
 
 #comment-form-header {

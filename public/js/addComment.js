@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Select the "Add Comment" button
     const addCommentButton = document.querySelector('.add-comment-button');
     const commentForm = document.getElementById('comment-form');
+    const commentFormContainer = document.querySelector('.comment-form-container');
     const submitButton = commentForm.querySelector('button[type="submit"]');
 
     // Add an event listener to the button
@@ -26,11 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Add Comment button clicked');
 
         // For example, you can show/hide the comment form
-        const commentForm = document.getElementById('comment-form');
-        if (commentForm.style.display === 'none') {
-            commentForm.style.display = 'block';
+        if (commentFormContainer.style.display === 'none') {
+            commentFormContainer.style.display = 'flex';
         } else {
-            commentForm.style.display = 'none';
+            commentFormContainer.style.display = 'none';
         }
     });
     submitButton.addEventListener('click', async (event) => {
