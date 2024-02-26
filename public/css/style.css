@@ -302,13 +302,12 @@ main {
 
 .comment-form-container {
     border: 3px solid var(--black);
-    width: 80%;
     margin: 0 auto;
     flex-direction: column;
 }
 
 #comment-form-header {
-    height: 50px;
+    height: 3px;
     background-color: var(--black);
 }
 
